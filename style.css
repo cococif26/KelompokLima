@@ -1,0 +1,491 @@
+@font-face {
+  font-family: cash-font;
+  src: url(font/ClashDisplay-Variable.ttf);
+}
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background-color: #faf7f2;
+}
+/* NAVBAR CSS */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 35px;
+  height: 50px;
+}
+
+.logo {
+  font-size: 35px;
+  font-family: cash-font;
+}
+.menu {
+  display: flex;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.menu li a {
+  padding: 10px 25px;
+  font-size: 22px;
+  font-family: cash-font;
+}
+
+nav .judul {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+nav .judul a {
+  color: rgb(41, 41, 27);
+  text-decoration: none;
+}
+
+nav .judul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+nav .menu li {
+  list-style: none;
+  padding: 5px;
+}
+
+.menu li:hover {
+  text-decoration: underline;
+  color: black;
+  margin-top: 4px;
+}
+
+/* END NAVBAR CSS */
+
+/* HEADER */
+.container-header {
+  padding: 89px;
+  display: flex;
+  justify-content: space-between;
+}
+.header {
+  padding: 40px 0;
+  font-size: larger;
+  padding-top: 65px;
+}
+.header h2 {
+  margin-bottom: 15px;
+  font-size: 35px;
+  font-family: cash-font;
+}
+.header p {
+  font-size: 20px;
+  font-family: cash-font;
+}
+.container-header img {
+  border-radius: 25px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header a {
+  margin-top: 30px;
+  font-size: 18px;
+  padding: 10px 8px;
+  background-color: #d5453a;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  position: absolute;
+  font-family: cash-font;
+  color: white;
+  text-decoration: none;
+}
+
+/* END HEADER */
+
+/* start PROFILE */
+.jdl-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 35px;
+  font-family: cash-font;
+  margin-top: 55px;
+}
+.jdl-profile p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+.cards-container {
+  display: flex;
+  gap: 40px; /* ngsi jarak sbsr 40px antar krtu */
+  display: flex; /*atur elemen dlm body*/
+  justify-content: center; /*elemen agr rata tengah scra horizontal*/
+  align-items: center; /*elemen agr rata tengah scra vertikal*/
+  min-height: 60vh; /*kontainer body mmiliki tinggi min 100% dr tinggi viewport*/
+}
+
+.card {
+  background: #a5cdd7;
+  border-radius: 8px; /* buat krtu jd sedikit melengkung */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* nambahin bayangan buat ngasi efek ngambang */
+  padding: 20px; /* ngasi ruang di dalam kartu antara konten dan tepi kartu */
+  text-align: center;
+  width: 250px; /*lebar tetap kartu sebesar 250px*/
+  font-family: cash-font;
+  margin-bottom: 35px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-bottom: 15px; /* jarak antara fto dan elemen dbwhnya */
+}
+
+.card-content h2 {
+  margin: 10px 0 5px; /*atur jarak di sekitar judul (h2). Atas: 10px. Kiri dan kanan: 0px. Bawah: 5px.*/
+}
+
+.card-content p {
+  color: rgb(13, 13, 13); /*ngsi wrna teks dskripsi*/
+}
+
+.view-btn {
+  background-color: #cf472a;
+  color: black;
+  padding: 10px 20px; /*atas-bwh 10px, kiri knn 20px*/
+  border-radius: 5px;
+  cursor: pointer; /*ubah kursor menjadi pointer saat tombol dihover*/
+  text-align: center;
+  display: inline-block; /*buat tombol memiliki lebar otomatis berdasarkan kontennya*/
+}
+
+.view-btn:hover {
+  background-color: #a5cdd7; /*Saat tombol dihover, warna jd ini*/
+}
+
+.modal-toggle {
+  display: none;
+}
+
+.modal {
+  display: none; /*Modal disembunyikan secara default*/
+  position: fixed; /*Modal diposisikan tetap di layar meskipun halaman di-scroll*/
+  top: 0;
+  left: 0; /*Modal dimulai dari sudut kiri atas layar*/
+  width: 100%; /*Modal mencakup seluruh layar*/
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /*ngasi warna hitam transparan (opacity 60%) sebagai latar belakang modal*/
+  justify-content: center;
+  align-items: center;
+  font-family: cash-font;
+}
+
+/* ini checkbox untuk menampilkan atau menyembunyikan modal */
+/* display:flex, ketika checkbox dicentang elemen modal display:none; (tdk terlihat)
+mnjdi display:flex; shingga modal muncul di layar */
+.modal-toggle:checked + .modal {
+  display: flex;
+}
+
+.modal-content {
+  background: #a5cdd7; /*wrna latar blkg*/
+  padding: 20px; /*ngsi ruang di dalam modal antara konten dan tepi modal*/
+  border-radius: 8px; /*buat sudut modal melengkung*/
+  width: 400px; /*lebar tetap modal sebesar 400px*/
+  text-align: center;
+  position: relative;
+}
+
+.modal-pic {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute; /*Tombol "close" diposisikan relatif terhadap modal*/
+  top: 10px;
+  right: 10px; /*Tombol "close" berada di sudut kanan atas modal dengan jarak 10px*/
+  font-size: 24px; /*uk font untk simbol x*/
+  color: rgb(0, 0, 0);
+  cursor: pointer; /*ubah kursor mjadi pointer saat tombol dihover*/
+}
+
+.close:hover {
+  color: #f39c9c; /*saat tmbol dihover wrna teks brubah*/
+}
+
+/* END PROFILE */
+
+/* start materi-container */
+.jdl-materi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  font-family: cash-font;
+}
+.container-materi {
+  display: flex;
+  min-height: 30vh;
+  gap: 0.1rem;
+  padding: 65px;
+}
+.col-left {
+  flex: 0.9;
+  border-radius: 2em;
+}
+.col-right {
+  flex: 1;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.row {
+  flex: 1;
+  border-radius: 2em;
+}
+.row1 {
+  display: flex;
+  border: none;
+  gap: 1em;
+}
+.row2 {
+  display: flex;
+  border: none;
+  gap: 1em;
+}
+.row-col {
+  flex: 1;
+  border-radius: 1em;
+  border: 1px solid black;
+  height: 290px;
+}
+.row-col2 {
+  flex: 1;
+  border-radius: 1em;
+  border: 1px solid black;
+  height: 290px;
+}
+
+.teks-first {
+  width: 625px;
+  height: 598px;
+  border-radius: 25px;
+  border: 1px solid black;
+}
+.p-bold {
+  padding: 20px;
+  font-size: 60px;
+  font-weight: large;
+  font-family: "cash-font";
+  font-weight: bold;
+}
+.img-album {
+  border-radius: 2em;
+  width: 352px;
+  height: 290px;
+}
+
+/* end css materi-container */
+
+/* css container materi-word */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 26px;
+}
+.container-atas-word {
+  background-image: url(img/msword.jpg);
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 130px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan {
+  border-radius: 15px;
+  padding: 40px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan h1 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+.container-penjelasan p {
+  font-size: 18px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+}
+.container-penjelasan h2 {
+  font-size: 30px;
+  font-family: altone-bold;
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+.container-penjelasan ul li {
+  font-size: 18px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+}
+/* end css container materi-word */
+
+/* css container materi-ppt */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 26px;
+}
+.container-atas-ppt {
+  background-image: url(img/msppt.jpg);
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 130px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan {
+  border-radius: 15px;
+  padding: 40px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan h1 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+.container-penjelasan p {
+  font-size: 18px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+}
+.container-penjelasan h2 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+.container-penjelasan ol li {
+  font-size: 18px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+}
+/* end css container materi-ppt */
+
+/* css container materi-access */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 26px;
+}
+.container-atas-acs {
+  background-image: url(img/msaccess.jpg);
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 130px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan {
+  border-radius: 15px;
+  padding: 40px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan h1 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+.container-penjelasan p {
+  font-size: 18px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+}
+.container-penjelasan h2 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+
+/* end css container materi-access */
+
+/* css container materi-excel */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 26px;
+}
+.container-atas-excl {
+  background-image: url(img/msexcel.jpg);
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 130px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan {
+  border-radius: 15px;
+  padding: 40px;
+  margin-top: 15px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.container-penjelasan h1 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+.container-penjelasan p {
+  font-size: 18px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+}
+.container-penjelasan h2 {
+  font-size: 30px;
+  font-family: "cash-font";
+  margin-bottom: 8px;
+  text-decoration: underline;
+}
+/* end css container materi-excel */
+
+/* footer */
+footer {
+  border: 1px solid black;
+  padding: 20px;
+  margin: 10px;
+  margin-bottom: 5px;
+  font-family: "cash-font";
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+/* end css footer */
