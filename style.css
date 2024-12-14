@@ -236,6 +236,7 @@ mnjdi display:flex; shingga modal muncul di layar */
   min-height: 30vh;
   gap: 0.1rem;
   padding: 65px;
+  margin-top: -25px;
 }
 .col-left {
   flex: 0.9;
